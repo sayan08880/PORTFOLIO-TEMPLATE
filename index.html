@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PORTFOLIO</title>
+  <link rel="icon" type="image/jpeg" href="logo.png">
+  <link rel="stylesheet" href="portfolio.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" onerror="this.onerror=null;this.href='https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css'">
+  <link rel="stylesheet" href="theme-overrides.css">
+</head>
+<body>
+  <main>
+    <header class="header">
+      <a href="index.html" class="logo" data-site-logo>PORTFOLIO</a>
+      <nav class="navbar" id="navbar">
+        <a href="about.html">ABOUT</a>
+        <a href="project.html">PROJECTS</a>
+        <a href="skill.html">SKILLS</a>
+        <a href="contact.html">CONTACT</a>
+      </nav>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()" role="button" aria-label="Toggle menu" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </header>
+
+    <section class="home">
+      <div class="home-contant">
+        <h1 id="homeGreeting">Hi, I'm Your Name</h1>
+        <h3 id="homeTitle">TECHNICAL EXPLORER</h3>
+        <p id="homeTagline">TURNING IDEAS INTO FAST, CLEAN, AND FUNCTIONAL WEB APPLICATIONS WITH REAL-WORLD IMPACT</p>
+        <div class="btn-box">
+          <button id="homeButton" class="modern-btn" type="button">
+            <span id="homeButtonText">VIEW DETAILS</span>
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="img">
+        <img id="siteProfileImage" src="placeholder.svg" class="profile-hero" alt="Profile">
+      </div>
+    </section>
+  </main>
+
+  <div class="particles" id="particles"></div>
+  <script src="page-transition.js"></script>
+  <script src="icon-fallback.js"></script>
+  <script src="portfolio-data.js"></script>
+  <script src="portfolio-render.js"></script>
+</body>
+</html>

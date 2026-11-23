@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAIL</title>
+    <link rel="icon" type="image/jpeg" href="logo.png">
+
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+:root {
+  --bg-deep: #050508;
+  --glass-bg: rgba(255, 255, 255, 0.055);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --accent: #00d4ff;
+  --text-primary: #f0f4ff;
+  --text-secondary: rgba(224, 232, 255, 0.72);
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  background: var(--bg-deep);
+  background-image:
+    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(30, 40, 80, 0.22), transparent),
+    radial-gradient(ellipse 40% 30% at 80% 100%, rgba(20, 30, 60, 0.18), transparent);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+.contact {
+  padding: 100px 8% 80px;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.section-heading h2 {
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.section-heading h2 span {
+  background: linear-gradient(135deg, #00d4ff, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.contact-container {
+  max-width: 640px;
+  margin: 0 auto;
+  background: var(--glass-bg);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border-radius: 24px;
+  padding: 40px 36px;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: var(--transition);
+}
+
+.contact-container:hover {
+  transform: scale(1.01);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.contact-container p {
+  text-align: center;
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  outline: none;
+  transition: var(--transition);
+  font-family: inherit;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  border-color: rgba(0, 212, 255, 0.5);
+  background: rgba(0, 212, 255, 0.06);
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.12);
+}
+
+.input-group textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 15px;
+  margin-top: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: rgba(240, 244, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.submit-btn:hover {
+  transform: scale(1.03);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.submit-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.back-btn-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}
+
+.s2 {
+  padding: 13px 34px;
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: rgba(240, 244, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.s2:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.dot {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  animation: floatDot linear infinite;
+}
+
+@keyframes floatDot {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  20% { opacity: 0.5; }
+  80% { opacity: 0.25; }
+  100% { transform: translateY(-70px) scale(0.4); opacity: 0; }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .contact-container, .s2 {
+    background: rgba(12, 12, 35, 0.92) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact {
+    padding: 80px 5% 60px;
+  }
+  .contact-container {
+    padding: 32px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact {
+    padding: 70px 4% 50px;
+  }
+  .section-heading h2 {
+    font-size: 1.75rem;
+  }
+  .contact-container {
+    padding: 24px 18px;
+  }
+  .s2 {
+    padding: 12px 28px;
+    font-size: 0.95rem;
+  }
+}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" onerror="this.onerror=null;this.href='https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css'">
+  <link rel="stylesheet" href="theme-overrides.css">
+</head>
+
+<body>
+
+    <section class="contact" id="contact">
+        <div class="section-heading">
+            <h2 id="contactFormHeading">CONTACT <span>ME</span></h2>
+        </div>
+
+        <div class="contact-container">
+            <p id="contactFormIntro">HAVE A PROJECT, QUESTION, OR COLLABORATION IDEA? SEND ME A MESSAGE DIRECTLY</p>
+
+            <form id="contactForm" action="https://formsubmit.co/you@example.com" method="POST">
+
+                <input id="contactFormSubject" type="hidden" name="_subject" value="New Portfolio Contact Message">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+
+                <div class="input-group">
+                    <label id="contactNameLabel">ENTER NAME</label>
+                    <input id="contactNameInput" type="text" name="Name" placeholder="Enter your name" required>
+                </div>
+
+                <div class="input-group">
+                    <label id="contactPhoneInputLabel">CONTACT NUMBER</label>
+                    <input id="contactPhoneInput" type="tel" name="Contact Number" placeholder="Enter your contact number" required>
+                </div>
+
+                <div class="input-group">
+                    <label id="contactEmailInputLabel">EMAIL ADDRESS</label>
+                    <input id="contactEmailInput" type="email" name="Email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="input-group">
+                    <label id="contactMessageLabel">MESSAGE</label>
+                    <textarea id="contactMessageInput" name="Message" placeholder="Write your message..." required></textarea>
+                </div>
+
+                <button id="contactSubmitButton" type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+
+        <div class="back-btn-container">
+            <a href="index.html" class="s2"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> <span id="contactBackButton">BACK TO HOME</span></a>
+        </div>
+
+        <div class="particles" id="particles"></div>
+    </section>
+<script src="page-transition.js"></script>
+  <script src="icon-fallback.js"></script>
+<script src="portfolio-data.js"></script>
+<script src="portfolio-render.js"></script>
+</body>
+</html>

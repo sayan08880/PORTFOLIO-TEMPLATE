@@ -1,0 +1,222 @@
+/* =========================================================
+   SHARED ADMIN THEME + GLASSMORPHISM OVERRIDES
+   Loaded after page-specific styles so Admin theme controls
+   work consistently on every public page.
+========================================================= */
+:root {
+  --admin-page-bg: #030305;
+  --admin-page-text: #f0f4ff;
+  --admin-accent: #00d4ff;
+  --admin-font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+
+  /* Glass tokens (shared) */
+  --glass-bg: rgba(255, 255, 255, 0.055);
+  --glass-bg-strong: rgba(255, 255, 255, 0.09);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-blur: 20px;
+  --shadow-glass: 0 12px 40px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --radius-lg: 24px;
+  --radius-md: 18px;
+  --radius-pill: 50px;
+  --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html,
+body {
+  min-height: 100%;
+  background: #030305 !important;
+  background-color: #030305 !important;
+  color: var(--admin-page-text) !important;
+}
+
+/* Ambient background layers — premium black glassmorphism */
+body {
+  background-image:
+    radial-gradient(ellipse 70% 45% at 50% -5%, rgba(90, 100, 130, 0.18), transparent 55%),
+    radial-gradient(ellipse 40% 50% at 0% 40%, rgba(60, 70, 95, 0.12), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 90% 95%, rgba(40, 45, 65, 0.15), transparent 50%),
+    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(25, 28, 40, 0.35), transparent 70%),
+    linear-gradient(165deg, #050508 0%, #08080c 40%, #030305 100%) !important;
+  background-attachment: fixed !important;
+}
+
+/* Apply selected website font without overwriting icon fonts. */
+body,
+body *:not(.fa):not(.fas):not(.far):not(.fab):not(.fa-solid):not(.fa-regular):not(.fa-brands):not([class^="fa-"]):not([class*=" fa-"]) {
+  font-family: var(--admin-font-family) !important;
+}
+
+/* Page wrappers stay transparent */
+main,
+.projects,
+.contact,
+.page-shell,
+.container {
+  background-color: transparent !important;
+}
+
+/* Text colors */
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6,
+body p,
+body label,
+body .hero-title,
+body .section-title,
+body .project-info h3,
+body .project-info p,
+body .section-heading h2,
+body .row-main h3,
+body .row-main p,
+body .skill-title,
+body .footer {
+  color: var(--admin-page-text) !important;
+}
+
+/* Accent color across headings, links, icons */
+body a:not(.btn):not(.btn-primary):not(.btn-secondary):not(.s2):not(.modern-btn):not(.project-style-btn):not(.submit-btn) {
+  color: var(--admin-accent);
+}
+
+body .section-heading h2 span,
+body .hero-subtitle,
+body .row-label,
+body .row-tag,
+body .badge,
+body .section-icon,
+body .home__social-icon,
+body .project-link-icon,
+body .map-overlay-tag i,
+body .icon-wrap i,
+body .contact-pill i,
+body .skill-title {
+  color: var(--admin-accent) !important;
+}
+
+body .skill-bar,
+body .skill-fill,
+body .skill-card::before,
+body .profile-photo-wrap {
+  background: var(--admin-accent) !important;
+}
+
+body .row-tag,
+body .badge,
+body .section-icon {
+  border-color: var(--admin-accent) !important;
+}
+
+body .top-nav {
+  background: color-mix(in srgb, var(--admin-page-bg) 88%, transparent) !important;
+}
+
+/* Glass card polish for shared components */
+body .project-card,
+body .skill-card,
+body .info-card,
+body .container:not(header .container) {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: var(--shadow-glass);
+}
+
+body .project-card:hover,
+body .skill-card:hover,
+body .info-card:hover {
+  background: rgba(255, 255, 255, 0.07) !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
+}
+
+/* Project action icons independent from remote PNG assets. */
+.project-link-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.25);
+  color: var(--admin-accent);
+  font-size: 1.25rem;
+  transition: var(--transition-smooth);
+  text-decoration: none;
+}
+
+.project-link-icon:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.08);
+}
+
+/* Focus states for accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--admin-accent);
+  outline-offset: 3px;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  body .project-card,
+  body .skill-card,
+  body .info-card,
+  body .container {
+    background: rgba(12, 12, 35, 0.92) !important;
+  }
+}
+
+
+/* Prevent double icons: Font Awesome ::before + SVG fallback */
+i.fa-svg-ready::before,
+i.fa-svg-ready::after,
+.fa-svg-ready::before,
+.fa-svg-ready::after {
+  content: none !important;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  font-size: 0 !important;
+}
+i.fa-svg-ready {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+i.fa-svg-ready svg.portfolio-svg-icon {
+  display: block;
+  width: 1em;
+  height: 1em;
+}
+
+
+/* Liquid glass buttons site-wide — scale only, no glow/color fill */
+body .s2,
+body .project-style-btn,
+body .modern-btn,
+body .submit-btn {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: rgba(240, 244, 255, 0.92) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+  transition: transform 0.3s ease, background 0.3s ease !important;
+}
+body .s2:hover,
+body .project-style-btn:hover,
+body .modern-btn:hover,
+body .submit-btn:hover {
+  transform: scale(1.05) !important;
+  background: rgba(255, 255, 255, 0.09) !important;
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+}

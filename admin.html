@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel</title>
+<link rel="icon" type="image/jpeg" href="logo.png">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <div class="particles" id="particles"></div>
+
+  <!-- ===================== LOGIN VIEW ===================== -->
+  <div id="loginView" class="login-card">
+    <h2>ADMIN LOGIN</h2><br><br>
+    <div class="field">
+      <label for="adminPassword">PASSWORD</label><br><br>
+      <input type="password" id="adminPassword" placeholder="*****">
+    </div><br>
+    <button type="button" id="loginBtn" class="btn btn-primary">Login</button>
+    <p id="loginStatus" class="status"></p>
+  </div>
+
+  <!-- ===================== ADMIN APP ===================== -->
+  <div id="adminApp" class="admin-shell" hidden>
+
+    <div class="admin-top">
+      <div class="brand">
+        <h1>PORTFOLIO ADMIN</h1>
+        <p>Manage every section of your live portfolio</p>
+      </div>
+      <div class="top-actions">
+        <button type="button" id="saveBtn" class="btn btn-primary">Save Changes</button>
+        <button type="button" id="resetBtn" class="btn btn-danger">Reset Defaults</button>
+      </div>
+    </div>
+
+    <div class="notice">
+      Changes are saved in this browser only (localStorage). Open any portfolio page in the same browser to see updates. Use "Save Changes" after editing.
+    </div>
+
+    <p id="status" class="status"></p>
+
+    <div class="grid">
+
+      <!-- SITE / BRAND -->
+      <div class="panel full">
+        <div class="panel-head"><h2>Site &amp; Social Links</h2></div>
+        <div class="form-grid">
+          <div class="field"><label>Logo Text</label><input type="text" id="site_logoText"></div>
+          <div class="field"><label>Full Name</label><input type="text" id="site_fullName"></div>
+          <div class="field"><label>Profile Image Path / Data URL</label><input type="text" id="site_profileImage"></div>
+          <div class="field"><label>Upload Profile Image</label><input type="file" id="profileImageUpload" accept="image/*"></div>
+          <div class="field full profile-preview-wrap">
+            <label>Preview</label>
+            <div class="preview-row">
+              <img id="profileImagePreview" src="placeholder.svg" alt="Preview">
+              <button type="button" id="cropProfileBtn" class="btn btn-secondary btn-small">Crop Photo</button>
+            </div>
+            <p class="help">Upload an image, then use Crop Photo to adjust framing before saving.</p>
+          </div>
+          <div class="field"><label>GitHub URL</label><input type="text" id="site_github"></div>
+          <div class="field"><label>LinkedIn URL</label><input type="text" id="site_linkedin"></div>
+          <div class="field"><label>Facebook URL</label><input type="text" id="site_facebook"></div>
+          <div class="field"><label>Instagram URL</label><input type="text" id="site_instagram"></div>
+        </div>
+      </div>
+
+      <!-- HOME -->
+      <div class="panel">
+        <div class="panel-head"><h2>Home Page</h2></div>
+        <div class="form-grid">
+          <div class="field"><label>Greeting</label><input type="text" id="home_greeting"></div>
+          <div class="field"><label>Title</label><input type="text" id="home_title"></div>
+          <div class="field full"><label>Tagline</label><input type="text" id="home_tagline"></div>
+          <div class="field"><label>Button Text</label><input type="text" id="home_buttonText"></div>
+          <div class="field"><label>Button Link</label><input type="text" id="home_buttonLink"></div>
+        </div>
+      </div>
+
+      <!-- ABOUT -->
+      <div class="panel">
+        <div class="panel-head"><h2>About Page</h2></div>
+        <div class="form-grid">
+          <div class="field"><label>Heading</label><input type="text" id="about_heading"></div>
+          <div class="field"><label>Subtitle</label><input type="text" id="about_subtitle"></div>
+          <div class="field full"><label>About Text</label><textarea id="about_text"></textarea></div>
+        </div>
+      </div>
+
+      <!-- PROJECTS -->
+      <div class="panel full">
+        <div class="panel-head">
+          <h2>Projects</h2>
+          <button type="button" id="addProjectBtn" class="btn btn-secondary btn-small">+ Add Project</button>
+        </div>
+        <div class="rows" id="projectRows"></div>
+      </div>
+
+      <!-- SKILLS (home page bars) -->
+      <div class="panel full">
+        <div class="panel-head">
+          <h2>Skills (Home Page)</h2>
+          <button type="button" id="addSkillBtn" class="btn btn-secondary btn-small">+ Add Skill</button>
+        </div>
+        <div class="rows" id="skillRows"></div>
+      </div>
+
+      <!-- CV BASICS -->
+      <div class="panel full">
+        <div class="panel-head"><h2>CV — Basic Info</h2></div>
+        <div class="form-grid">
+          <div class="field"><label>Nav Initials</label><input type="text" id="cv_navInitials"></div>
+          <div class="field"><label>Badge</label><input type="text" id="cv_badge"></div>
+          <div class="field"><label>Full Name</label><input type="text" id="cv_fullName"></div>
+          <div class="field"><label>Subtitle</label><input type="text" id="cv_subtitle"></div>
+          <div class="field"><label>Phone</label><input type="text" id="cv_phone"></div>
+          <div class="field"><label>Email</label><input type="text" id="cv_email"></div>
+          <div class="field"><label>Location</label><input type="text" id="cv_location"></div>
+          <div class="field"><label>Profile Tag</label><input type="text" id="cv_profileTag"></div>
+          <div class="field full"><label>Profile Heading</label><input type="text" id="cv_profileHeading"></div>
+          <div class="field full"><label>Profile Text</label><textarea id="cv_profileText"></textarea></div>
+        </div>
+      </div>
+
+      <!-- CV SKILLS -->
+      <div class="panel full">
+        <div class="panel-head">
+          <h2>CV — Skills</h2>
+          <button type="button" id="addCvSkillBtn" class="btn btn-secondary btn-small">+ Add CV Skill</button>
+        </div>
+        <div class="rows" id="cvSkillRows"></div>
+      </div>
+
+      <!-- CV PROJECT GROUPS -->
+      <div class="panel full">
+        <div class="panel-head">
+          <h2>CV — Project Groups</h2>
+          <button type="button" id="addCvProjectBtn" class="btn btn-secondary btn-small">+ Add Group</button>
+        </div>
+        <div class="rows" id="cvProjectRows"></div>
+      </div>
+
+      <!-- EDUCATION -->
+      <div class="panel full">
+        <div class="panel-head">
+          <h2>CV — Education</h2>
+          <button type="button" id="addEducationBtn" class="btn btn-secondary btn-small">+ Add Education</button>
+        </div>
+        <div class="rows" id="educationRows"></div>
+      </div>
+
+      <!-- LANGUAGES -->
+      <div class="panel full">
+        <div class="panel-head">
+          <h2>CV — Languages</h2>
+          <button type="button" id="addLanguageBtn" class="btn btn-secondary btn-small">+ Add Language</button>
+        </div>
+        <div class="rows" id="languageRows"></div>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="panel full">
+        <div class="panel-head"><h2>Contact Page</h2></div>
+        <div class="form-grid">
+          <div class="field"><label>Heading</label><input type="text" id="contact_heading"></div>
+          <div class="field"><label>Email Label</label><input type="text" id="contact_emailLabel"></div>
+          <div class="field"><label>Email</label><input type="text" id="contact_email"></div>
+          <div class="field"><label>Phone Label</label><input type="text" id="contact_phoneLabel"></div>
+          <div class="field"><label>Phone</label><input type="text" id="contact_phone"></div>
+          <div class="field"><label>Location Label</label><input type="text" id="contact_locationLabel"></div>
+          <div class="field full"><label>Location</label><textarea id="contact_location"></textarea></div>
+          <div class="field"><label>Map Title</label><input type="text" id="contact_mapTitle"></div>
+          <div class="field"><label>Map Tag</label><input type="text" id="contact_mapTag"></div>
+          <div class="field full"><label>Map Embed URL</label><input type="text" id="contact_mapEmbedUrl"></div>
+          <div class="field"><label>Send Mail Button</label><input type="text" id="contact_sendMailButton"></div>
+          <div class="field"><label>Back Button</label><input type="text" id="contact_backButton"></div>
+          <div class="field"><label>Form Heading</label><input type="text" id="contact_formHeading"></div>
+          <div class="field full"><label>Form Intro</label><input type="text" id="contact_formIntro"></div>
+          <div class="field"><label>Form Subject</label><input type="text" id="contact_formSubject"></div>
+          <div class="field"><label>Form Submit Email</label><input type="text" id="contact_formSubmitEmail"></div>
+          <div class="field"><label>Name Label</label><input type="text" id="contact_nameLabel"></div>
+          <div class="field"><label>Name Placeholder</label><input type="text" id="contact_namePlaceholder"></div>
+          <div class="field"><label>Phone Input Label</label><input type="text" id="contact_phoneInputLabel"></div>
+          <div class="field"><label>Phone Placeholder</label><input type="text" id="contact_phonePlaceholder"></div>
+          <div class="field"><label>Email Input Label</label><input type="text" id="contact_emailInputLabel"></div>
+          <div class="field"><label>Email Placeholder</label><input type="text" id="contact_emailPlaceholder"></div>
+          <div class="field"><label>Message Label</label><input type="text" id="contact_messageLabel"></div>
+          <div class="field"><label>Message Placeholder</label><input type="text" id="contact_messagePlaceholder"></div>
+          <div class="field"><label>Submit Button</label><input type="text" id="contact_submitButton"></div>
+        </div>
+      </div>
+
+      <!-- THEME -->
+      <div class="panel full">
+        <div class="panel-head"><h2>Power Theme Controls</h2></div>
+        <div class="form-grid">
+          <div class="field"><label>Website Font</label>
+            <select id="theme_fontFamily">
+              <option value="Poppins">Poppins</option>
+              <option value="Inter">Inter</option>
+              <option value="Roboto">Roboto</option>
+              <option value="Montserrat">Montserrat</option>
+              <option value="Open Sans">Open Sans</option>
+            </select>
+          </div>
+          <div class="field color-field">
+            <label>Global Text Color</label>
+            <div class="color-row">
+              <input type="color" id="theme_globalTextColor_picker" class="color-picker" data-hex-target="theme_globalTextColor" value="#000000">
+              <input type="text" id="theme_globalTextColor" class="color-hex" placeholder="#000000">
+            </div>
+          </div>
+          <div class="field color-field">
+            <label>Accent Color</label>
+            <div class="color-row">
+              <input type="color" id="theme_accentColor_picker" class="color-picker" data-hex-target="theme_accentColor" value="#000000">
+              <input type="text" id="theme_accentColor" class="color-hex" placeholder="#000000">
+            </div>
+          </div>
+          <div class="field color-field">
+            <label>Home Background</label>
+            <div class="color-row">
+              <input type="color" id="theme_homeBg_picker" class="color-picker" data-hex-target="theme_homeBg" value="#000000">
+              <input type="text" id="theme_homeBg" class="color-hex" placeholder="#000000">
+            </div>
+          </div>
+          <div class="field color-field">
+            <label>Home Text</label>
+            <div class="color-row">
+              <input type="color" id="theme_homeText_picker" class="color-picker" data-hex-target="theme_homeText" value="#000000">
+              <input type="text" id="theme_homeText" class="color-hex" placeholder="#000000">
+            </div>
+          </div>
+          <div class="field color-field">
+            <label>About Background</label>
+            <div class="color-row">
+              <input type="color" id="theme_aboutBg_picker" class="color-picker" data-hex-target="theme_aboutBg" value="#000000">
+              <input type="text" id="theme_aboutBg" class="color-hex" placeholder="#000000">
+            </div>
+          </div>
+          <div class="field color-field">
+            <label>About Text</label>
+            <div class="color-row">
+              <input type="color" id="theme_aboutText_picker" class="color-picker" data-hex-target="theme_aboutText" value="#000000">
+              <input type="text" id="theme_aboutText" class="color-hex" placeholder="#000000">
+            </div>
+          </div>
+          <div class="field color-field">
+            <label>Projects Background</label>
+            <div class="color-row">
+              <input type="color" id="theme_projectsBg_picker" class="color-picker" data-hex-target="theme_projectsBg" value="#000000">
+              <input type="text" id="theme_projectsBg" class="color-hex" placeholder="#000000">
+            </div>
+          </div>
+          <div class="field color-field">
+            <label>Projects Text</label>
+            <div class="color-row">
+              <input type="color" id="theme_projectsText_picker" class="color-picker" data-hex-target="theme_projectsText" value="#000000">
+              <input type="text" id="theme_projectsText" class="color-hex" placeholder="#000000">
+            </div>
+          </div>
+          <div class="field color-field">
+            <label>Skills Background</label>
+            <div class="color-row">
+              <input type="color" id="theme_skillsBg_picker" class="color-picker" data-hex-target="theme_skillsBg" value="#000000">
+              <input type="text" id="theme_skillsBg" class="color-hex" placeholder="#000000">
+            </div>
+          </div>
+          <div class="field color-field">
+            <label>Skills Text</label>
+            <div class="color-row">
+              <input type="color" id="theme_skillsText_picker" class="color-picker" data-hex-target="theme_skillsText" value="#000000">
+              <input type="text" id="theme_skillsText" class="color-hex" placeholder="#000000">
+            </div>
+          </div>
+          <div class="field color-field">
+            <label>CV Background</label>
+            <div class="color-row">
+              <input type="color" id="theme_cvBg_picker" class="color-picker" data-hex-target="theme_cvBg" value="#000000">
+              <input type="text" id="theme_cvBg" class="color-hex" placeholder="#000000">
+            </div>
+          </div>
+          <div class="field color-field">
+            <label>CV Text</label>
+            <div class="color-row">
+              <input type="color" id="theme_cvText_picker" class="color-picker" data-hex-target="theme_cvText" value="#000000">
+              <input type="text" id="theme_cvText" class="color-hex" placeholder="#000000">
+            </div>
+          </div>
+          <div class="field color-field">
+            <label>Contact Background</label>
+            <div class="color-row">
+              <input type="color" id="theme_contactBg_picker" class="color-picker" data-hex-target="theme_contactBg" value="#000000">
+              <input type="text" id="theme_contactBg" class="color-hex" placeholder="#000000">
+            </div>
+          </div>
+          <div class="field color-field">
+            <label>Contact Text</label>
+            <div class="color-row">
+              <input type="color" id="theme_contactText_picker" class="color-picker" data-hex-target="theme_contactText" value="#000000">
+              <input type="text" id="theme_contactText" class="color-hex" placeholder="#000000">
+            </div>
+          </div>
+          <div class="field color-field">
+            <label>Contact Form Background</label>
+            <div class="color-row">
+              <input type="color" id="theme_contactFormBg_picker" class="color-picker" data-hex-target="theme_contactFormBg" value="#000000">
+              <input type="text" id="theme_contactFormBg" class="color-hex" placeholder="#000000">
+            </div>
+          </div>
+          <div class="field color-field">
+            <label>Contact Form Text</label>
+            <div class="color-row">
+              <input type="color" id="theme_contactFormText_picker" class="color-picker" data-hex-target="theme_contactFormText" value="#000000">
+              <input type="text" id="theme_contactFormText" class="color-hex" placeholder="#000000">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RAW JSON -->
+      <div class="panel full">
+        <div class="panel-head">
+          <h2>Raw JSON Editor</h2>
+          <div class="top-actions">
+            <button type="button" id="refreshJsonBtn" class="btn btn-secondary btn-small">Refresh</button>
+            <button type="button" id="applyJsonBtn" class="btn btn-secondary btn-small">Apply JSON</button>
+            <button type="button" id="exportBtn" class="btn btn-secondary btn-small">Export</button>
+            <label class="btn btn-secondary btn-small" style="cursor:pointer;">
+              Import <input type="file" id="importFile" accept="application/json" style="display:none;">
+            </label>
+          </div>
+        </div>
+        <p class="help">Advanced: edit the full data object directly as JSON.</p>
+        <div class="json-box">
+          <textarea id="jsonEditor" rows="14"></textarea>
+        </div>
+      </div>
+
+      <!-- ===================== UPDATE CV (Google Drive link) — bottom of page ===================== -->
+      <div class="panel full">
+        <div class="panel-head">
+          <h2>Update CV (Google Drive Link)</h2>
+        </div>
+        <div class="form-grid">
+          <div class="field full">
+            <label>Current CV</label>
+            <p id="cvPdfCurrentName" class="help">No CV link published yet.</p>
+            <a id="cvPdfViewLink" class="btn btn-secondary btn-small" href="#" target="_blank" rel="noopener" style="display:none;width:fit-content;">
+              Open Current CV Link
+            </a>
+          </div>
+
+          <div class="field full">
+            <label for="cvPdfLinkInput">Google Drive Share Link</label>
+            <input type="text" id="cvPdfLinkInput" placeholder="https://drive.google.com/file/d/XXXXXXXX/view?usp=sharing">
+          </div>
+        </div>
+
+        <div class="top-actions" style="margin-top:14px;">
+          <button type="button" id="cvPdfSaveBtn" class="btn btn-primary">Save &amp; Publish CV Link</button>
+        </div>
+
+        <p id="cvPdfStatus" class="status"></p>
+      </div>
+
+    </div><!-- /.grid -->
+
+  </div><!-- /#adminApp -->
+
+  
+  <!-- ===================== CROP MODAL ===================== -->
+  <div id="cropModal" class="crop-modal" hidden>
+    <div class="crop-modal-card">
+      <div class="crop-modal-head">
+        <h3>Crop Profile Photo</h3>
+        <button type="button" id="cropCloseBtn" class="btn btn-secondary btn-small">Close</button>
+      </div>
+      <div class="crop-stage">
+        <img id="cropImage" alt="Crop source">
+      </div>
+      <div class="crop-actions">
+        <button type="button" id="cropApplyBtn" class="btn btn-primary">Apply Crop</button>
+        <button type="button" id="cropCancelBtn" class="btn btn-secondary">Cancel</button>
+      </div>
+      <p class="help">Drag to reposition. Use the handles to resize the crop area. Apply when ready.</p>
+    </div>
+  </div>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
+  <script src="portfolio-data.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

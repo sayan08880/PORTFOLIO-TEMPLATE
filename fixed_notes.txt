@@ -1,0 +1,17 @@
+PORTFOLIO TEMPLATE — LOCAL-ONLY BUILD
+
+Changes from original:
+1. All Firebase / Firestore connections, config, and SDK loading removed.
+2. Owner personal information, contact details, social links, and profile photo removed.
+3. Default content is generic placeholder template text.
+4. Profile image defaults to placeholder.svg (blank avatar).
+5. Admin panel is fully localStorage-based (no backend required).
+6. Default admin password: admin (stored as SHA-256 hash in localStorage; change by clearing storage or editing PASS_KEY).
+7. Image upload supported in admin (profile + project images → data URLs).
+8. Existing design, CSS, page transitions, and architecture preserved.
+
+How to use:
+- Open any HTML page via a local web server (or file:// for basic viewing).
+- Go to admin.html, login with password "admin".
+- Edit content, upload images, click Save Changes.
+- Portfolio pages in the same browser will reflect the data immediately.

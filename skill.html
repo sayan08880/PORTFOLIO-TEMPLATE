@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SKILLS</title>
+  <link rel="icon" type="image/jpeg" href="logo.png">
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg-deep: #050508;
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-bg-hover: rgba(255, 255, 255, 0.07);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --accent: #00d4ff;
+  --text-primary: #f0f4ff;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  background: #030305;
+  background-color: #030305;
+  background-image:
+    radial-gradient(ellipse 70% 45% at 50% -5%, rgba(90, 100, 130, 0.18), transparent 55%),
+    radial-gradient(ellipse 40% 50% at 0% 40%, rgba(60, 70, 95, 0.12), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 90% 95%, rgba(40, 45, 65, 0.15), transparent 50%),
+    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(25, 28, 40, 0.35), transparent 70%),
+    linear-gradient(165deg, #050508 0%, #08080c 40%, #030305 100%);
+  background-attachment: fixed;
+  color: #ffffff;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.page-wrap,
+h1,
+.skills-grid,
+.skill-card {
+  position: relative;
+  z-index: 2;
+}
+
+/* Full middle — title + skills block perfectly centered */
+.page-wrap {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 48px 24px 110px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  margin: 0 0 40px;
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* Centered skill cards as a group in the middle */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  align-content: center;
+  gap: 22px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.skill-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  padding: 26px 22px;
+  transition: var(--transition);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  width: 100%;
+  max-width: 300px;
+  flex: 0 1 300px;
+  text-align: center;
+}
+
+.skill-card:hover {
+  transform: scale(1.03);
+  background: var(--glass-bg-hover);
+  /* no color glow */
+}
+
+.skill-title {
+  font-size: 1.1rem;
+  margin-bottom: 18px;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.skill-bar-container {
+  height: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.skill-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #00b8e6, #00d4ff);
+  border-radius: 20px;
+  transition: width 2s cubic-bezier(0.34, 1.2, 0.64, 1);
+  position: relative;
+}
+
+.skill-bar::after {
+  content: attr(data-percent);
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+}
+
+/* Back button fixed at bottom center */
+.back-btn {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  z-index: 50;
+  margin: 0;
+}
+
+/* Liquid glass button — scale only on hover */
+.s2 {
+  padding: 13px 34px;
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: rgba(240, 244, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.s2:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.s2:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.35);
+  outline-offset: 3px;
+}
+
+.particles {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.dot {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  animation: floatDot linear infinite;
+}
+
+@keyframes floatDot {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  20% { opacity: 0.35; }
+  80% { opacity: 0.15; }
+  100% { transform: translateY(-70px) scale(0.4); opacity: 0; }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .skill-card, .s2 { background: rgba(12, 12, 20, 0.92) !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 700px) {
+  h1 { font-size: 1.85rem; margin-bottom: 28px; }
+  .skill-card { max-width: 100%; flex: 1 1 100%; }
+  .page-wrap { padding: 36px 16px 100px; }
+  .back-btn { bottom: 20px; }
+}
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" onerror="this.onerror=null;this.href='https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css'">
+  <link rel="stylesheet" href="theme-overrides.css">
+</head>
+<body>
+  <div class="page-wrap">
+    <h1>MY SKILLS</h1>
+    <div class="skills-grid" id="skillsGrid"></div>
+  </div>
+  <div class="back-btn">
+    <a href="index.html" class="s2"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> BACK TO HOME</a>
+  </div>
+  <div class="particles" id="particles"></div>
+
+  <script src="page-transition.js"></script>
+  <script src="icon-fallback.js"></script>
+  <script src="portfolio-data.js"></script>
+  <script src="portfolio-render.js"></script>
+</body>
+</html>

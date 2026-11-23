@@ -1,0 +1,621 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ================================
+   GLOBAL RESET
+================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: #030305;
+  background-color: #030305;
+  background-image:
+    radial-gradient(ellipse 70% 45% at 50% -5%, rgba(90, 100, 130, 0.18), transparent 55%),
+    radial-gradient(ellipse 40% 50% at 0% 40%, rgba(60, 70, 95, 0.12), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 90% 95%, rgba(40, 45, 65, 0.15), transparent 50%),
+    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(25, 28, 40, 0.35), transparent 70%),
+    linear-gradient(165deg, #050508 0%, #08080c 40%, #030305 100%);
+  background-attachment: fixed;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ================================
+   LOGIN SCREEN CENTER
+================================ */
+
+#loginView.login-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: min(500px, calc(100% - 32px));
+  margin: 0;
+  padding: 32px 28px;
+
+  text-align: center;
+  z-index: 5;
+}
+
+#loginView.login-card h2 {
+  color: #00d4ff;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#loginView.login-card p {
+  color: #c8d2ff;
+  margin-bottom: 18px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+#loginView.login-card .field {
+  align-items: center;
+  text-align: center;
+}
+
+#loginView.login-card label {
+  text-align: center;
+}
+
+#loginView.login-card input {
+  text-align: center;
+}
+
+#loginView.login-card .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 6px;
+}
+
+#loginView.login-card .status {
+  text-align: center;
+}
+
+#loginView.login-card[hidden] {
+  display: none;
+}
+
+/* ================================
+   ADMIN MAIN LAYOUT
+================================ */
+
+.admin-shell {
+  width: min(1180px, calc(100% - 28px));
+  margin: 0 auto;
+  padding: 28px 0 70px;
+  position: relative;
+  z-index: 2;
+}
+
+.admin-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+
+  padding: 18px 22px;
+  margin-bottom: 24px;
+
+  border: 1px solid rgba(0, 212, 255, .2);
+  background: rgba(255, 255, 255, .07);
+  backdrop-filter: blur(16px);
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, .28);
+}
+
+.brand h1 {
+  font-size: clamp(1.5rem, 4vw, 2.7rem);
+  line-height: 1;
+  color: #00d4ff;
+}
+
+.brand p {
+  color: #b8c7ff;
+  margin-top: 7px;
+  font-weight: 500;
+}
+
+.top-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* ================================
+   BUTTONS
+================================ */
+
+.btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 20px;
+  cursor: pointer;
+
+  font-weight: 800;
+  letter-spacing: .02em;
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    background .25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #00d4ff, #00ff88);
+  color: #050433;
+  box-shadow: 0 14px 30px rgba(0, 212, 255, .22);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .14);
+  color: #fff;
+}
+
+.btn-danger {
+  background: rgba(239, 68, 68, .18);
+  color: #fecaca;
+  border: 1px solid rgba(239, 68, 68, .35);
+}
+
+.btn-small {
+  padding: 9px 14px;
+  font-size: .84rem;
+}
+
+/* ================================
+   NOTICE BOX
+================================ */
+
+.notice {
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: rgba(255, 214, 10, .08);
+  border: 1px solid rgba(255, 214, 10, .25);
+  color: #fff7bf;
+  margin-bottom: 22px;
+  line-height: 1.6;
+}
+
+/* ================================
+   CARDS / PANELS
+================================ */
+
+.login-card,
+.panel {
+  border: 1px solid rgba(0, 212, 255, .18);
+  background: rgba(255, 255, 255, .07);
+  backdrop-filter: blur(18px);
+  border-radius: 26px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, .28);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.panel {
+  padding: 22px;
+  margin-bottom: 20px;
+}
+
+.panel.full {
+  grid-column: 1 / -1;
+}
+
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.panel h2 {
+  font-size: 1.25rem;
+  color: #00d4ff;
+}
+
+.panel p.help {
+  color: #b8c7ff;
+  font-size: .92rem;
+  margin-top: 5px;
+}
+
+/* ================================
+   FORM
+================================ */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field.full {
+  grid-column: 1 / -1;
+}
+
+label {
+  color: #dbeafe;
+  font-weight: 700;
+  font-size: .9rem;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, .13);
+  background: rgba(2, 6, 23, .45);
+  color: #fff;
+  border-radius: 16px;
+  padding: 12px 14px;
+  outline: none;
+  font-size: .95rem;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+  border-color: rgba(0, 212, 255, .8);
+  box-shadow: 0 0 0 4px rgba(0, 212, 255, .08);
+}
+
+/* ================================
+   DYNAMIC ROWS
+================================ */
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cms-row {
+  padding: 16px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, .055);
+  border: 1px solid rgba(255, 255, 255, .11);
+}
+
+.row-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 12px;
+}
+
+.row-title strong {
+  color: #00ffcc;
+}
+
+/* ================================
+   JSON EDITOR
+================================ */
+
+.json-box textarea {
+  min-height: 360px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .86rem;
+}
+
+.status {
+  margin-top: 12px;
+  color: #86efac;
+  font-weight: 700;
+  min-height: 24px;
+}
+
+/* ================================
+   PARTICLES BACKGROUND
+================================ */
+
+.particles {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.dot {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(0, 212, 255, .45);
+  animation: floatDot linear infinite;
+}
+
+@keyframes floatDot {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: .55;
+  }
+
+  80% {
+    opacity: .3;
+  }
+
+  100% {
+    transform: translateY(-60px) scale(.5);
+    opacity: 0;
+  }
+}
+
+/* ================================
+   ADD ROW FLASH EFFECT
+================================ */
+
+.row-flash {
+  outline: 2px solid #00d4ff;
+  box-shadow: 0 0 25px rgba(0, 212, 255, 0.45);
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+  .grid,
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .top-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  #loginView.login-card {
+    width: calc(100% - 24px);
+    padding: 26px 20px;
+  }
+
+  #loginView.login-card .btn {
+    width: 100%;
+    margin: 6px 0;
+  }
+
+  .admin-shell {
+    width: calc(100% - 20px);
+    padding-top: 18px;
+  }
+
+  .panel {
+    padding: 18px;
+  }
+
+  .panel-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .top-actions {
+    width: 100%;
+  }
+
+  .top-actions .btn {
+    flex: 1;
+    text-align: center;
+  }
+}
+
+/* Button glow disabled across the admin panel. */
+.btn,
+.btn:hover,
+.btn:focus,
+button,
+button:hover,
+button:focus {
+  box-shadow: none !important;
+  filter: none !important;
+  text-shadow: none !important;
+}
+
+select {
+  width: 100%;
+  min-height: 46px;
+  padding: 11px 13px;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, .25);
+  background: rgba(15, 23, 42, .78);
+  color: #f8fafc;
+  font: inherit;
+  outline: none;
+}
+
+select:focus-visible {
+  border-color: #00d4ff;
+  box-shadow: none !important;
+}
+
+/* Button labels: remove underline and force uppercase */
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+a.btn,
+.btn,
+.btn-primary,
+.btn-secondary,
+.btn-danger {
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+}
+
+button:hover,
+button:focus,
+button:active,
+a.btn:hover,
+a.btn:focus,
+a.btn:active,
+a.btn:visited {
+  text-decoration: none !important;
+}
+
+button *,
+a.btn * {
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+}
+
+/* ================================
+   COLOR PICKER ROWS
+================================ */
+
+.color-field .color-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.color-picker {
+  width: 48px !important;
+  min-width: 48px;
+  height: 44px;
+  padding: 4px !important;
+  border-radius: 12px !important;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, .2) !important;
+}
+
+.color-hex {
+  flex: 1;
+}
+
+.preview-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+#profileImagePreview {
+  max-width: 120px;
+  max-height: 120px;
+  border-radius: 50%;
+  border: 2px solid #333;
+  object-fit: cover;
+  background: #111;
+}
+
+.help {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  margin-top: 6px;
+}
+
+/* ================================
+   CROP MODAL
+================================ */
+
+.crop-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.crop-modal[hidden] {
+  display: none !important;
+}
+
+.crop-modal-card {
+  width: min(720px, 100%);
+  max-height: 90vh;
+  overflow: auto;
+  background: #0b0f1a;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.crop-modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  gap: 12px;
+}
+
+.crop-modal-head h3 {
+  color: #00d4ff;
+  font-size: 1.15rem;
+}
+
+.crop-stage {
+  width: 100%;
+  max-height: 55vh;
+  background: #050508;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.crop-stage img {
+  display: block;
+  max-width: 100%;
+}
+
+.crop-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+/* Cropper.js overrides for dark theme */
+.cropper-view-box,
+.cropper-face {
+  border-radius: 50%;
+}

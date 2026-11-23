@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROJECTS</title>
+  <link rel="icon" type="image/jpeg" href="logo.png">
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+:root {
+  --bg-deep: #050508;
+  --glass-bg: rgba(255, 255, 255, 0.055);
+  --glass-bg-strong: rgba(255, 255, 255, 0.09);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --accent: #00d4ff;
+  --text-primary: #f0f4ff;
+  --text-secondary: rgba(224, 232, 255, 0.72);
+  --radius-lg: 24px;
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  background: var(--bg-deep);
+  background-image:
+    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(30, 40, 80, 0.22), transparent),
+    radial-gradient(ellipse 40% 30% at 80% 100%, rgba(20, 30, 60, 0.18), transparent);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.projects,
+.section-heading,
+.projects-container,
+.project-card,
+.back-btn-container {
+  position: relative;
+  z-index: 2;
+}
+
+.projects {
+  padding: 100px 8% 80px;
+  min-height: 100vh;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.section-heading h2 {
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+
+.section-heading h2 span {
+  background: linear-gradient(135deg, #00d4ff, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.project-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: var(--transition);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.project-card:hover {
+  transform: scale(1.03);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.project-img-container {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: #0a0a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.project-img-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(3, 3, 18, 0.4), transparent 40%);
+  pointer-events: none;
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover .project-img {
+  transform: scale(1.06);
+}
+
+.project-info {
+  padding: 28px 24px 30px;
+  text-align: center;
+}
+
+.project-info h3 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.project-info p {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin-bottom: 22px;
+}
+
+.github-link {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.github-link:hover {
+  transform: scale(1.12);
+}
+
+.github-logo {
+  width: 44px;
+  height: 44px;
+  filter: brightness(0.95);
+  transition: all 0.3s ease;
+}
+
+.github-link:hover .github-logo {
+  filter: brightness(1.2) drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
+}
+
+.back-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 56px;
+}
+
+.s2 {
+  padding: 13px 34px;
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: rgba(240, 244, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.s2:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.particles {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.dot {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  animation: floatDot linear infinite;
+}
+
+@keyframes floatDot {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  20% { opacity: 0.5; }
+  80% { opacity: 0.25; }
+  100% { transform: translateY(-70px) scale(0.4); opacity: 0; }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .project-card, .s2 {
+    background: rgba(12, 12, 35, 0.92) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .projects {
+    padding: 80px 5% 60px;
+  }
+  .section-heading h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects {
+    padding: 70px 4% 50px;
+  }
+  .projects-container {
+    grid-template-columns: 1fr;
+  }
+  .project-img-container {
+    height: 190px;
+  }
+  .project-info h3 {
+    font-size: 1.1rem;
+  }
+  .s2 {
+    padding: 12px 28px;
+    font-size: 0.95rem;
+  }
+}
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" onerror="this.onerror=null;this.href='https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css'">
+  <link rel="stylesheet" href="theme-overrides.css">
+</head>
+<body>
+  <section class="projects" id="projects">
+    <div class="section-heading">
+      <h2>MY <span>PROJECTS</span></h2>
+    </div>
+
+    <div class="projects-container" id="projectsContainer"></div>
+
+    <div class="back-btn-container">
+      <a href="index.html" class="s2"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to Home</a>
+    </div>
+  </section>
+
+  <div class="particles" id="particles"></div>
+  <script src="page-transition.js"></script>
+  <script src="icon-fallback.js"></script>
+  <script src="portfolio-data.js"></script>
+  <script src="portfolio-render.js"></script>
+</body>
+</html>
